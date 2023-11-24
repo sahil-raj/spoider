@@ -1,0 +1,25 @@
+{
+  "name": "spoider",
+  "version": "1.0.0",
+  "description": "simple website crawler",
+  "main": "main.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahil-raj/spoider.git"
+  },
+  "author": "github.com/sahil-raj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sahil-raj/spoider/issues"
+  },
+  "homepage": "https://github.com/sahil-raj/spoider#readme",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}
