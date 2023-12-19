@@ -22,8 +22,8 @@ test("normalizeURL trailing slashes", () => {
 //main part of the url is case insensitive so normalize that
 //eg-> WwW.gOoGle.CoM is same as www.google.com
 test("normlizeURL caps", () => {
-    const input = "";
+    const input = "http://TeSt.mYNet.cOm/path/page.php/?t=d#div";
     const actual = normalizeURL(input);
-    const expected = "";
-    expect(actual).toBe(expect);
+    const expected = "test.mynet.com/path/page.php";
+    expect(actual).toBe(expected);
 });
