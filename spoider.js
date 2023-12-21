@@ -1,4 +1,6 @@
-const url = require("url")
+const url = require("url");
+const {JSDOM} = require("jsdom");
+
 
 //normalize the urls before crwaling the so that no broken links are encountered and links are not crawled multiple times
 function normalizeURL(myURL) {
@@ -14,6 +16,15 @@ function normalizeURL(myURL) {
     return urlObj.host + urlObj.pathname;
 }
 
+function getUrls(epoint) {
+    const x = new JSDOM(epoint);
+    let p = [];
+    for (let i of x.window.document.querySelectorAll("h1"))
+        p.push(i);
+    return p;
+}
+
 module.exports = {
-    normalizeURL
+    normalizeURL,
+    getUrls
 }
