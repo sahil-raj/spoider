@@ -27,3 +27,5 @@ test("normlizeURL caps", () => {
     const expected = "test.mynet.com/path/page.php";
     expect(actual).toBe(expected);
 });
+
+//test for grabing the links
