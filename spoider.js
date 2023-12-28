@@ -21,8 +21,13 @@ function normalizeURL(myURL) {
 function getUrls(epoint) {
     const x = new JSDOM(epoint);
     let r = [];
-    for (const l of x.window.document.querySelectorAll("a"))
-        r.push(l.href);
+    for (const l of x.window.document.querySelectorAll("a")){
+        //realtive url handling
+        if (l.href.slice(0,1) == "/")
+            r.push(x.window.location.host + l.href);
+        else
+            r.push(l.href);
+    }
     return r;
 }
 
