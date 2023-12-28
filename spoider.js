@@ -16,12 +16,14 @@ function normalizeURL(myURL) {
     return urlObj.host + urlObj.pathname;
 }
 
+//gets urls form the start point
+//works only for a tags right now
 function getUrls(epoint) {
     const x = new JSDOM(epoint);
-    let p = [];
-    for (let i of x.window.document.querySelectorAll("h1"))
-        p.push(i);
-    return p;
+    let r = [];
+    for (const l of x.window.document.querySelectorAll("a"))
+        r.push(l.href);
+    return r;
 }
 
 module.exports = {

@@ -1,4 +1,4 @@
-const {normalizeURL} = require("../spoider.js");
+const {normalizeURL, getUrls} = require("../spoider.js");
 const {test, expect} = require("@jest/globals");
 
 
@@ -28,4 +28,11 @@ test("normlizeURL caps", () => {
     expect(actual).toBe(expected);
 });
 
-//test for grabing the links
+//test for grabing the links from testUrls function
+//only working for a tag
+test("getUrls html", () => {
+    const i = '<a href="test.com" /> <a href="" />';
+    const ac = getUrls(i);
+    const ex = ["test.com", ""];
+    expect(ac).toEqual(ex);
+});
