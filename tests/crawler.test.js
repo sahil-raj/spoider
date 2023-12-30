@@ -31,8 +31,15 @@ test("normlizeURL caps", () => {
 //test for grabing the links from testUrls function
 //only working for a tag
 test("getUrls html", () => {
-    const i = '<a href="test.com" /> <a href="" />';
+    const i = '<a href="http://TeSt.mYNet.cOm/path/page.php/?t=d#div" /> <a href="" />';
     const ac = getUrls(i);
-    const ex = ["test.com", ""];
+    const ex = ["test.mynet.com/path/page.php"];
+    expect(ac).toEqual(ex);
+});
+
+test("getUrls relative URLs", () => {
+    const i = '<a href="http://TeSt.mYNet.cOm/path/page.php/?t=d#div" /> <a href="/main/test/" />';
+    const ac = getUrls(i);
+    const ex = ["test.mynet.com/path/page.php", "test.com/main/test/"];
     expect(ac).toEqual(ex);
 });
