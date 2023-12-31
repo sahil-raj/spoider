@@ -42,7 +42,13 @@ function getUrls(epoint) {
     return r;
 }
 
+async function fetchData(u) {
+    let r = await fetch(u);
+    return r.text();
+}
+
 module.exports = {
     normalizeURL,
-    getUrls
+    getUrls,
+    fetchData
 }

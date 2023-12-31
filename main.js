@@ -1,2 +1,3 @@
 const spoider = require("./spoider");
-spoider.getUrls('<a href="test.com" /> <a href="" />');
+
+console.log(spoider.fetchData("https://google.com"))
