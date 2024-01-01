@@ -1,3 +1,7 @@
 const spoider = require("./spoider");
 
-console.log(spoider.fetchData("https://google.com"))
+//handling promise by the fetchData function
+
+spoider.fetchData("https://google.com").then((e) => {
+    console.log(e);
+});
