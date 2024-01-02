@@ -44,7 +44,8 @@ function getUrls(epoint) {
 
 async function fetchData(u) {
     let r = await fetch(u);
-    return r.text();
+    let dom = new JSDOM(r.text());
+    return dom;
 }
 
 module.exports = {
