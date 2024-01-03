@@ -1,5 +1,8 @@
 const { JSDOM } = require("jsdom");
 
+//array of all the urls crawled
+let crawled = [];
+
 
 //normalize the urls before crwaling the so that no broken links are encountered and links are not crawled multiple times
 function normalizeURL(myURL) {
@@ -48,8 +51,15 @@ async function fetchData(u) {
     return dom;
 }
 
+//function to start crawling and 
+function crawl(entry) {
+    entry = normalizeURL(entry);
+    crawled.push(entry);
+}
+
 module.exports = {
     normalizeURL,
     getUrls,
-    fetchData
+    fetchData,
+    crawl
 }
