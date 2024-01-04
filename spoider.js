@@ -47,14 +47,13 @@ function getUrls(epoint) {
 
 async function fetchData(u) {
     let r = await fetch(u);
-    let dom = new JSDOM(r.text());
-    return dom;
+    let dom = new JSDOM(await r.text());
+    return {dom: dom, htmlText: await r.text()};
 }
 
 //function to start crawling and 
 function crawl(entry) {
-    entry = normalizeURL(entry);
-    crawled.push(entry);
+    return;
 }
 
 module.exports = {

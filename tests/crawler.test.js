@@ -48,7 +48,7 @@ test("getUrls relative URLs", () => {
 //test to check if returned data is html
 test("fetchData dom", () => {
     const i = "https://google.com";
-    const ac = typeof(fetchData(i).then((e) => {console.log(e);e.window.document.body}));//make sure there is a body of the returned object
+    const ac = typeof(fetchData(i).then((e) => {e.dom.window.document.body}));//make sure there is a body of the returned object
     const ex = typeof({});
     expect(ac).toEqual(ex);
 });
