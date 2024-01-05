@@ -17,4 +17,4 @@ const spoider = require("./spoider");
 
 // console.log(spoider.normalizeURL("https://google.com"));
 
-spoider.crawl("https://netflix.com").then((e) => {console.log(e)});
+spoider.crawl("https://computersolutionranchi.com", 500).then((e) => {console.log(e)});

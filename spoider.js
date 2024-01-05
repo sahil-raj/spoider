@@ -51,24 +51,24 @@ async function fetchData(u) {
 }
 
 //function to start crawling and 
-async function crawl(entry, limit=10) {
+async function crawl(entry, limit=100) {
     let c = 0;
     toCrawl.push(entry);
     while(toCrawl.length > 0) {
-        ++c;
         if (c > limit)
             break;
         console.log(`currently crawling... ${toCrawl[toCrawl.length-1]}`);
         await fetchData(toCrawl[toCrawl.length-1]).then((data) => {
             let burls = getUrls(data);
-            for (const l in burls) {
+            for (const l of burls) {
                 if (!crawled.includes(l) && !toCrawl.includes(l))
                     toCrawl.push(l);
             }
-            crawled.push(toCrawl[toCrawl.length-1]);
         }).catch((err) => {
             console.log(`Error while crawling ${toCrawl[toCrawl.length-1]}`);
         }).finally(() => {
+            crawled.push(toCrawl[toCrawl.length-1]);
+            ++c;
             toCrawl.pop();
         });
     }
