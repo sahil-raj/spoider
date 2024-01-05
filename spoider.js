@@ -22,7 +22,7 @@ function normalizeURL(myURL) {
 //works only for a tags right now
 function getUrls(epoint) {
     const dom = new JSDOM(epoint);
-    let r = [];
+    let r = new Array();
     for (const ele of dom.window.document.querySelectorAll("a")) {
         //using url in each case to check for invalid urls
         //relative url
