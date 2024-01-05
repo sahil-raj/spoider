@@ -7,10 +7,14 @@ const spoider = require("./spoider");
 //     console.log(x);
 // });
 
-spoider.fetchData("https://google.com").then((e) => {
-    try {
-        console.log(e);
-    } catch(er) {
-        console.log(`failed`);
-    }
-});
+// spoider.fetchData("https://google.com").then((e) => {
+//     try {
+//         console.log(e);
+//     } catch(er) {
+//         console.log(`failed`);
+//     }
+// });
+
+// console.log(spoider.normalizeURL("https://google.com"));
+
+spoider.crawl("https://netflix.com").then((e) => {console.log(e)});

@@ -1,7 +1,7 @@
 const { JSDOM } = require("jsdom");
 
 //array of all the urls crawled
-let crawled = [];
+let crawled = [], toCrawl = [];
 
 
 //normalize the urls before crwaling the so that no broken links are encountered and links are not crawled multiple times
@@ -22,7 +22,7 @@ function normalizeURL(myURL) {
 //works only for a tags right now
 function getUrls(epoint) {
     const dom = new JSDOM(epoint);
-    let r = new Array();
+    let r = [];
     for (const ele of dom.window.document.querySelectorAll("a")) {
         //using url in each case to check for invalid urls
         //relative url
@@ -46,14 +46,33 @@ function getUrls(epoint) {
 }
 
 async function fetchData(u) {
-    let r = await fetch(u);
-    let dom = new JSDOM(await r.text());
-    return {dom: dom, htmlText: await r.text()};
+    let r  = await fetch(u);
+    return r.text();
 }
 
 //function to start crawling and 
-function crawl(entry) {
-    return;
+async function crawl(entry, limit=10) {
+    let c = 0;
+    toCrawl.push(entry);
+    while(toCrawl.length > 0) {
+        ++c;
+        if (c > limit)
+            break;
+        console.log(`currently crawling... ${toCrawl[toCrawl.length-1]}`);
+        await fetchData(toCrawl[toCrawl.length-1]).then((data) => {
+            let burls = getUrls(data);
+            for (const l in burls) {
+                if (!crawled.includes(l) && !toCrawl.includes(l))
+                    toCrawl.push(l);
+            }
+            crawled.push(toCrawl[toCrawl.length-1]);
+        }).catch((err) => {
+            console.log(`Error while crawling ${toCrawl[toCrawl.length-1]}`);
+        }).finally(() => {
+            toCrawl.pop();
+        });
+    }
+    return crawled;
 }
 
 module.exports = {
