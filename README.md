@@ -17,7 +17,7 @@ To use this web crawler in your project, you need to have Node.js installed on y
 ## Usage
 
 ```javascript
-const { normalizeURL, getUrls, fetchData, crawl } = require("./webCrawler");
+const { normalizeURL, getUrls, fetchData, crawl } = require("./spoider");
 
 // Example usage
 const entryPoint = "https://example.com";
@@ -56,4 +56,4 @@ Contributions are welcome! Feel free to open an issue or submit a pull request f
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
