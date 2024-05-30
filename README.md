@@ -11,7 +11,7 @@ To use this web crawler in your project, you need to have Node.js installed on y
 3. Install the required dependencies by running:
 
    ```bash
-   npm install jsdom
+   npm install
    ```
 
 ## Usage
